@@ -1,0 +1,12 @@
+/m
+/multi.img
+/distros/*/boot
+/distros/*/lib
+/distros/*/usr
+/distros/*/*.gz
+/distros/*/*.xz
+/distros/*/*.img
+/distros/*/*.zip
+/distros/*/*.zst
+/distros/sailfish/pinephone-1.1
+

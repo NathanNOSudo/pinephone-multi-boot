@@ -1,0 +1,76 @@
+GIT repository with build scripts is available at: https://megous.com/git/pinephone-multi-boot/.
+
+It's not an end-user code, but the scripts are simple enough to understand and adapt for the adept Linux users.
+
+Development
+Project status: p-boot-demo is maintained and actively developed by the original author.
+
+
+PinePhone multi-distro demo image
+
+Here you can find a multi-boot uSD card image containing 13 different Pinephone distributions. The purpose of this image is 
+for users to easily try current major (and some minor) Pinephone Linux distributions, without having to figure out how to 
+flash them individually and juggle with many uSD cards.
+
+
+Key points:
+
+[Relatively] small 5GiB image containing 13 distributions: Arch Linux ARM 2020-09-08 Lune OS 0.113 Maemo Leste 20200906 
+Mobian 20200912 KDE Neon 20200912-132511 pmOS / fbkeyboard 2020-09-11 pmOS / GNOME 2020-09-11 pmOS / Phosh 2020-09-11 pmOS / 
+Plasma Mobile 2020-09-11 PureOS 20200908 Sailfish 1.1-3.3.0.16-devel-20200909 pmOS / sxmo 0.1.8-20200726 Ubuntu Touch 
+2020-09-10 Runs my p-boot bootloader and my latest kernel (5.9-rc5) Based on btrfs subvolumes and file level deduplication 
+(if you mess up, you can easily revert each distribution to original state using pre-created btrfs snapshots) All included 
+distributions work on Braveheart and later Pinephone variants (incl. 3GiB variant), thanks to sharing my kernel and 
+bootloader My modem power management driver is used on all distributions for safe and reliable handling of modem power 
+(instead of ad-hoc scripts used by original distributions) Suspend to ram based on the latest crust is available to all 
+distributions (whether they actually use it or not) The image is made to fit a 8GiB or larger uSD cards, and also works when 
+flashed to eMMC Some development history and technical details can be found on my blog.
+
+Quirks Distributions add weird hacks to their kernels to work around issues with some camera apps they use. This is not the 
+right way to fix issues with inadequate camera apps and therefore these apps don't work in this multi-boot image, because my 
+kernel doesn't have these hacks.
+
+I tried to make my kernel compatible with most distributions, but most distributions don't update the kernel often enough 
+and run outdated and unsupported kernels, so there may be some subtle compatibility issues. Some things may work better, 
+some things may break.
+
+Download The image is distributed as a torrent due to its size. Install some torrent software (suggestions: transmission, 
+qBittorrent) and click the previous link to start the download. Don't forget to let the torrent client run even after the 
+download finishes so that other people can get the image too.
+
+Thanks to sundog, the image is also available at: https://downloads.reclaim.technology/pinephone-multiboot-image/ as a 
+regular download.
+
+Installation Installation consists of decompressing image data (gzipped) and putting it to the SD card. Use zcat, or dd (if 
+you know how to identify SD card block device), or some end-user software like USBImager (there are reports that USBImager 
+corrupts the image during extraction, though) or Etcher (this one will probably violate your privacy) for that.
+
+It's suggested to verify the image was written correctly immediately after flashing by running dd if=/dev/sdcarddevice bs=1M 
+count=7500 | md5sum. MD5 sum must be aa5bb5fc44bc129b39e99d395e35b8b4. If your OS auto-mounts new filesystems, make sure it 
+does not do it for the SD card image, otherwise the hash may change, and this verification method will be unreliable.
+
+Optionally (strongly encouraged step) you can also stretch the OS partition to fit your entire uSD card, otherwise the free 
+space inside the filesystem will be limited to about 1.5 GiB, which is not enough for OS updates and/or longer term use of 
+this image. If you run out of space, all included distributions may become unstable.
+
+Partition stretching instructions are on this page.
+
+Passwords All passwords were changed to 1111 where possible. PureOS password is 123456. Root passwords are 1111. sxmo 
+login/password is mo/1111.
+
+Support the project p-boot demo is free and opensource software released under GPLv3. It is an independent personal project 
+not backed by any comapny or commercial interests. You can contribute by writing code, helping improve documentation, 
+spreading the word, and/or by donating.
+
+Share on: Twitter, Facebook, etc.
+
+Bugs and support
+Please report bugs via email:
+
+p-boot@xnux.eu
+Development
+Project status: p-boot-demo is maintained and actively developed by the original author.
+
+GIT repository with build scripts is available at: https://megous.com/git/pinephone-multi-boot/.
+
+It's not an end-user code, but the scripts are simple enough to understand and adapt for the adept Linux users.

@@ -1,0 +1,3 @@
+version=20200912-132511
+name="KDE Neon"
+bootargs="splash"
